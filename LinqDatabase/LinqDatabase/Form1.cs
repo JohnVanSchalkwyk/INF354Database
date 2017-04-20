@@ -86,7 +86,38 @@ namespace LinqDatabase
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<Staff> slList;
+            //Int32 selectedval = (Int32)cbxClientID.SelectedValue;
+           
+                Staff obj = new Staff();
+                obj.firstname = txtFirstname.Text;
+                obj.lastname = txtLastname.Text;
+                obj.id_number = txtID.Text;
+                obj.cellphone_number = txtCellphone.Text;
+                obj.street_number = Convert.ToInt32(txtStreetNumber.Text);
+                obj.street_name = txtStreetName.Text;
+                obj.street_area = txtAddressSuburb.Text;
+                obj.address_city = txtCityAddress.Text;
+                obj.address_province = txtAddressProvince.Text;
+                
+                db.Staffs.Add(obj);
+                db.SaveChanges();
+
+                txtFirstname.Text = "";
+                txtLastname.Text = "";
+                txtID.Text = "";
+                txtCellphone.Text = "";
+                txtStreetNumber.Text = "";
+                txtStreetName.Text = "";
+                txtCityAddress.Text = "";
+                txtAddressProvince.Text = "";
+                
+
+                var loadStaffQ = db.Staffs;
+                List<Client> staffList = loadStaffQ.ToList();
+                dgvStaffAll.DataSource = staffList;
+                MessageBox.Show("Successfully Added");
+
+            
         }
 
         private void clientMan_Click(object sender, EventArgs e)
@@ -240,6 +271,38 @@ namespace LinqDatabase
         private void btnUpdateClient_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Truck obj = new Truck();
+            obj.mode_type = txtType.Text;
+            obj.truck_type = txtMake.Text;
+            obj.truck_weight = Convert.ToInt32(txtLFW.Text);
+            obj.truck_kilos = Convert.ToInt32(txtTotKilo.Text);
+            obj.fuel_usage_kilo = Convert.ToInt32(txtFU100.Text);
+            obj.truck_capacity = Convert.ToInt32(txtLC.Text);
+            obj.body_type_trailer = txtBT.Text;
+            obj.horse_power = txtHP.Text;
+            obj.fuel_tank_litre = Convert.ToInt32(txtTS.Text);
+
+            db.Trucks.Add(obj);
+            db.SaveChanges();
+
+            txtType.Text = "";
+            txtMake.Text = "";
+            txtTotKilo.Text = "";
+            txtLC.Text = "";
+            txtLFW.Text = "";
+            txtTS.Text = "";
+            txtHP.Text = "";
+            txtBT.Text = "";
+            txtFU100.Text = "";
+ 
+            var loadTrucks = db.Trucks;
+            List<Truck> truckList = loadTrucks.ToList();
+            dgvFleet.DataSource = truckList;
+            MessageBox.Show("Successfully Added");
         }
 
         private void button5_Click(object sender, EventArgs e)
