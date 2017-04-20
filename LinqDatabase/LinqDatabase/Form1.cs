@@ -204,18 +204,61 @@ namespace LinqDatabase
             }
             else
             {
-                Client obj = new Client();
-                obj.business_name = txtBusinessName.Text;
-                obj.client_landline = txtLandline.Text;
-                obj.client_cellphone = textBox1.Text;
-                obj.client_lastname = textBox2.Text;
-                obj.client_firstname = textBox3.Text;
-                obj.client_address_areacode = textBox4.Text;
-                obj.client_city = textBox5.Text;
-                obj.client_address_area = textBox6.Text;
-                obj.client_address_number = textBox7.Text;
-                obj.client_address_street = textBox8.Text;
-                db.Clients.Add(obj);
+                try
+                {
+                    Client obj = new Client();
+                    obj.business_name = txtBusinessName.Text;
+                    obj.client_landline = txtLandline.Text;
+                    obj.client_cellphone = textBox1.Text;
+                    obj.client_lastname = textBox2.Text;
+                    obj.client_firstname = textBox3.Text;
+                    obj.client_address_areacode = textBox4.Text;
+                    obj.client_city = textBox5.Text;
+                    obj.client_address_area = textBox6.Text;
+                    obj.client_address_number = textBox7.Text;
+                    obj.client_address_street = textBox8.Text;
+                    db.Clients.Add(obj);
+                    db.SaveChanges();
+
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    textBox6.Text = "";
+                    textBox7.Text = "";
+                    textBox8.Text = "";
+                    txtLandline.Text = "";
+                    txtBusinessName.Text = "";
+
+                    updateList();
+                    MessageBox.Show("Successfully Added");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+
+            }
+        }
+
+        private void btnUpdateClient_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var x = db.Clients.SingleOrDefault(i => i.client_id == (Int32)cbxClientID.SelectedValue);
+
+
+                x.business_name = txtBusinessName.Text;
+                x.client_landline = txtLandline.Text;
+                x.client_cellphone = textBox1.Text;
+                x.client_lastname = textBox2.Text;
+                x.client_firstname = textBox3.Text;
+                x.client_address_areacode = textBox4.Text;
+                x.client_city = textBox5.Text;
+                x.client_address_area = textBox6.Text;
+                x.client_address_number = textBox7.Text;
+                x.client_address_street = textBox8.Text;
                 db.SaveChanges();
 
                 textBox1.Text = "";
@@ -229,17 +272,43 @@ namespace LinqDatabase
                 txtLandline.Text = "";
                 txtBusinessName.Text = "";
 
-                var loadClientQ = db.Clients;
-                List<Client> clList = loadClientQ.ToList();
-                dgvClientList.DataSource = clList;
-                MessageBox.Show("Successfully Added");
-
+                updateList();
+                MessageBox.Show("Successfully Updated");
             }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+
         }
 
-        private void btnUpdateClient_Click(object sender, EventArgs e)
+        private void btnDeleteClient_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var x = db.Clients.FirstOrDefault(i => i.client_id == (Int32)cbxClientID.SelectedValue);
+                db.Clients.Remove(x);
+                db.SaveChanges();
 
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                textBox8.Text = "";
+                txtLandline.Text = "";
+                txtBusinessName.Text = "";
+
+
+                updateList();
+                MessageBox.Show("Successfully Deleted");
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -258,6 +327,24 @@ namespace LinqDatabase
        
         }
 
+        private void updateList()
+        {
+            var popID = db.Clients;
+
+            List<Int32> pop = new List<Int32>();
+            pop.Add(-1);
+            foreach (var data in popID)
+            {
+                pop.Add(data.client_id);
+            }
+
+            cbxClientID.DataSource = pop;
+
+            var loadClientQ = db.Clients;
+            List<Client> clList = loadClientQ.ToList();
+            dgvClientList.DataSource = clList;
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             if (addClientTab == true)
@@ -271,16 +358,7 @@ namespace LinqDatabase
                 addClientTab = true;
             }
 
-            var popID = db.Clients;
-            
-            List<Int32> pop = new List<Int32>();
-            pop.Add(-1);
-            foreach(var data in popID)
-            {
-                pop.Add(data.client_id);
-            }
-
-            cbxClientID.DataSource = pop;
+            updateList();
 
         }
     }

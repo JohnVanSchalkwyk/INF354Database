@@ -256,6 +256,7 @@
             this.btnDeleteClient.TabIndex = 16;
             this.btnDeleteClient.Text = "Delete Client Info";
             this.btnDeleteClient.UseVisualStyleBackColor = false;
+            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
             // btnSaveClient
             // 
