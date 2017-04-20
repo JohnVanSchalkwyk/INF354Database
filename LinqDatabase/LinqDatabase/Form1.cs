@@ -13,7 +13,7 @@ namespace LinqDatabase
     public partial class Form1 : Form
     {
         TruckAppEntities1 db = new TruckAppEntities1();
-        bool addStaffTab = false, addClientTab = false, addFleetTab =false;
+        bool addStaffTab = false, addClientTab = false, addFleetTab = false, addGoods = false;
         List<Client> clList;
         List<Staff> slList;
 
@@ -29,6 +29,8 @@ namespace LinqDatabase
             addStaffTab = false;
             addClientTab = false;
             addFleetTab = false;
+            addGoods = false;
+            tabControlGoods.Hide();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,7 +115,7 @@ namespace LinqDatabase
                 
 
                 var loadStaffQ = db.Staffs;
-                List<Client> staffList = loadStaffQ.ToList();
+            List<Staff> staffList = loadStaffQ.ToList();
                 dgvStaffAll.DataSource = staffList;
                 MessageBox.Show("Successfully Added");
 
@@ -390,6 +392,149 @@ namespace LinqDatabase
        
         }
 
+        private void cbxGoodsID_TextUpdate(object sender, EventArgs e)
+        {
+            Int32 selectedVal = (Int32)cbxGoodsID.SelectedValue;
+            if (selectedVal == -1)
+            {
+                //Make rest of things empty for add
+                rtxtDescriptGoods.Text = "";
+                txtbxGoodName.Text = "";
+            }
+            else
+            {
+                var pop2 = db.BookingGoods.SingleOrDefault(i =>  i.goods_id == selectedVal);
+                rtxtDescriptGoods.Text = pop2.goods_description;
+                txtbxGoodName.Text = pop2.goods_type;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Int32 selectedval = (Int32)cbxGoodsID.SelectedValue;
+            if (selectedval != -1)
+            {
+                MessageBox.Show("Please select -1 to add");
+
+            }
+            else
+            {
+                try
+                {
+                    BookingGood obj = new BookingGood();
+                    obj.goods_type = txtbxGoodName.Text;
+                    obj.goods_description = rtxtDescriptGoods.Text;
+                    db.BookingGoods.Add(obj);
+                    db.SaveChanges();
+
+                    txtbxGoodName.Text = "";
+                    rtxtDescriptGoods.Text = "";
+                    updateList();
+                    MessageBox.Show("Successfully Added Good");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var x = db.BookingGoods.FirstOrDefault(i => i.goods_id == (Int32)cbxGoodsID.SelectedValue);
+                db.BookingGoods.Remove(x);
+                db.SaveChanges();
+
+                txtbxGoodName.Text = "";
+                rtxtDescriptGoods.Text = "";
+
+
+                updateList();
+                MessageBox.Show("Successfully Deleted Good");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var x = db.BookingGoods.FirstOrDefault(i => i.goods_id == (Int32)cbxGoodsID.SelectedValue);
+
+
+
+                x.goods_type = txtbxGoodName.Text;
+                x.goods_description = rtxtDescriptGoods.Text;
+                db.SaveChanges();
+
+                txtbxGoodName.Text = "";
+                rtxtDescriptGoods.Text = "";
+
+                updateList();
+                MessageBox.Show("Successfully Updated Good");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void cbxGoodsID_DisplayMemberChanged(object sender, EventArgs e)
+        {
+            Int32 selectedVal = (Int32)cbxGoodsID.SelectedValue;
+            if (selectedVal == -1)
+            {
+                //Make rest of things empty for add
+                rtxtDescriptGoods.Text = "";
+                txtbxGoodName.Text = "";
+            }
+            else
+            {
+                var pop2 = db.BookingGoods.SingleOrDefault(i => i.goods_id == selectedVal);
+                rtxtDescriptGoods.Text = pop2.goods_description;
+                txtbxGoodName.Text = pop2.goods_type;
+            }
+        }
+
+        private void cbxGoodsID_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Int32 selectedVal = (Int32)cbxGoodsID.SelectedValue;
+            if (selectedVal == -1)
+            {
+                //Make rest of things empty for add
+                rtxtDescriptGoods.Text = "";
+                txtbxGoodName.Text = "";
+            }
+            else
+            {
+                var pop2 = db.BookingGoods.SingleOrDefault(i => i.goods_id == selectedVal);
+                rtxtDescriptGoods.Text = pop2.goods_description;
+                txtbxGoodName.Text = pop2.goods_type;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+           if(addGoods == true)
+            {
+                tabControlGoods.Hide();
+                addGoods = false;
+            }
+            else
+            {
+                tabControlGoods.Show();
+                addGoods = true;
+            }
+
+            updateList();
+        }
+
         private void updateList()
         {
             var popID = db.Clients;
@@ -403,9 +548,46 @@ namespace LinqDatabase
 
             cbxClientID.DataSource = pop;
 
+            var popGID = db.BookingGoods;
+
+            List<Int32> popG = new List<Int32>();
+            popG.Add(-1);
+
+            foreach(var data in popGID)
+            {
+                popG.Add(data.goods_id);
+            }
+
+            cbxGoodsID.DataSource = popG;
+
             var loadClientQ = db.Clients;
             List<Client> clList = loadClientQ.ToList();
             dgvClientList.DataSource = clList;
+
+            var loadBookQ = db.BookingGoods;
+            List<BookingGood> blList = loadBookQ.ToList();
+            dgvGoods.DataSource = blList;
+
+
+           
+            var loadStaffQ = db.Staffs;
+            var loadFleet = db.Trucks;
+
+
+           
+            List<Staff> slList = loadStaffQ.ToList();
+            List<Truck> fleet = loadFleet.ToList();
+
+
+            //=================================================================
+            //          Populate the DataGridViews
+            //=================================================================
+            dgvStaffAll.DataSource = slList;
+            dgvFleet.DataSource = fleet;
+
+            //=================================================================
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
