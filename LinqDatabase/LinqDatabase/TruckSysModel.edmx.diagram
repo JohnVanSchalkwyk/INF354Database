@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34900bef09724092a6ee14e5de68354f" Name="Diagram1">
+        <EntityTypeShape EntityType="TruckAppModel.BookingGood" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.BookingTruck" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.ClientLogin" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.Client" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.DriversLiscenceCode" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.Staff" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.StaffBankingDetail" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.StaffDepartment" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.StaffLogin" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.TruckDriver" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.TruckMaintenance" Width="1.5" PointX="3.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.Truck" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckAppModel.TruckSleepType" Width="1.5" PointX="3.75" PointY="18.875" IsExpanded="true" />
+        <AssociationConnector Association="TruckAppModel.FK_BookingTruck_BookingGoods" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_BookingTruck_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_BookingTruck_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_BookingTruck_TruckDrivers" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_BookingTruck_Trucks" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Staff_DriversLiscenceCodes" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Trucks_DriversLiscenceCodes" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Staff_StaffBankingDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Staff_StaffDepartments" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Staff_StaffLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_TruckDrivers_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Trucks_TruckMaintenance" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckAppModel.FK_Trucks_TruckSleepTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
