@@ -16,5 +16,19 @@ namespace LinqDatabase
         {
             InitializeComponent();
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            TruckAppEntities1 db = new TruckAppEntities1();
+
+            var loadClientQ = db.Clients;
+            List < Client > clList = loadClientQ.ToList();
+            dgvClientList.DataSource = clList;
+        }
     }
 }

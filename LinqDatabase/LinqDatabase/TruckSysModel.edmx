@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TruckAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookingGoods">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goods_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="goods_description" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingTruck">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_date_made" Type="date" Nullable="false" />
+          <Property Name="booking_departure_date" Type="date" Nullable="false" />
+          <Property Name="booking_arrival_date" Type="date" Nullable="false" />
+          <Property Name="departure_street_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="departure_street_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="departure_street_area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="departure_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="arrival_street_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="arrival_street_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="arrival_street_area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="arrival_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="truck_id" Type="int" Nullable="false" />
+          <Property Name="staff_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="booking_notes" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="driver_id" Type="int" Nullable="false" />
+          <Property Name="delivery_distance" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientLogin">
+          <Key>
+            <PropertyRef Name="clientLogin_id" />
+          </Key>
+          <Property Name="clientLogin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientUser" Type="varchar" MaxLength="255" />
+          <Property Name="clientPass" Type="varchar" MaxLength="255" />
+          <Property Name="clientMail" Type="varchar" MaxLength="255" />
+          <Property Name="clientProfilePicture" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="business_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_landline" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="client_cellphone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="client_address_street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_address_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="client_address_area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_address_areacode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_login" Type="int" />
+        </EntityType>
+        <EntityType Name="DriversLiscenceCodes">
+          <Key>
+            <PropertyRef Name="licence_code_id" />
+          </Key>
+          <Property Name="licence_code_id" Type="int" Nullable="false" />
+          <Property Name="code_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="code_description" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="staff_id" />
+          </Key>
+          <Property Name="staff_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_number" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="cellphone_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="street_number" Type="int" Nullable="false" />
+          <Property Name="street_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street_area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address_province" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="licence_code_id" Type="int" Nullable="false" />
+          <Property Name="banking_id" Type="int" Nullable="false" />
+          <Property Name="login_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffBankingDetails">
+          <Key>
+            <PropertyRef Name="banking_id" />
+          </Key>
+          <Property Name="banking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bank_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="account_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="account_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="branch_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="branch_code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffDepartments">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="department_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="department_description" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffLogin">
+          <Key>
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TruckDrivers">
+          <Key>
+            <PropertyRef Name="driver_id" />
+          </Key>
+          <Property Name="driver_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staff_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TruckMaintenance">
+          <Key>
+            <PropertyRef Name="maintenance_id" />
+          </Key>
+          <Property Name="maintenance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kilos_serviced" Type="int" Nullable="false" />
+          <Property Name="date_last_service" Type="date" Nullable="false" />
+          <Property Name="date_tires_renewed" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trucks">
+          <Key>
+            <PropertyRef Name="truck_id" />
+          </Key>
+          <Property Name="truck_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="truck_registration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="truck_weight" Type="int" Nullable="false" />
+          <Property Name="truck_capacity" Type="int" Nullable="false" />
+          <Property Name="truck_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="truck_kilos" Type="int" Nullable="false" />
+          <Property Name="body_type_trailer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="licence_code_id" Type="int" Nullable="false" />
+          <Property Name="mode_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="horse_power" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fuel_tank_litre" Type="int" Nullable="false" />
+          <Property Name="fuel_usage_kilo" Type="int" Nullable="false" />
+          <Property Name="sleeping_type_id" Type="int" Nullable="false" />
+          <Property Name="maintenance_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TruckSleepTypes">
+          <Key>
+            <PropertyRef Name="sleeping_type_id" />
+          </Key>
+          <Property Name="sleeping_type_id" Type="int" Nullable="false" />
+          <Property Name="type_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type_description" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BookingTruck_BookingGoods">
+          <End Role="BookingGoods" Type="Self.BookingGoods" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingGoods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_TruckDrivers">
+          <End Role="TruckDrivers" Type="Self.TruckDrivers" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckDrivers">
+              <PropertyRef Name="driver_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="driver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Trucks">
+          <End Role="Trucks" Type="Self.Trucks" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trucks">
+              <PropertyRef Name="truck_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="truck_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_DriversLiscenceCodes">
+          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCodes" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriversLiscenceCodes">
+              <PropertyRef Name="licence_code_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="licence_code_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffBankingDetails">
+          <End Role="StaffBankingDetails" Type="Self.StaffBankingDetails" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffBankingDetails">
+              <PropertyRef Name="banking_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="banking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffDepartments">
+          <End Role="StaffDepartments" Type="Self.StaffDepartments" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffDepartments">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffLogin">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="login_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TruckDrivers_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="TruckDrivers" Type="Self.TruckDrivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="TruckDrivers">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_DriversLiscenceCodes">
+          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCodes" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriversLiscenceCodes">
+              <PropertyRef Name="licence_code_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="licence_code_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_TruckMaintenance">
+          <End Role="TruckMaintenance" Type="Self.TruckMaintenance" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckMaintenance">
+              <PropertyRef Name="maintenance_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="maintenance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_TruckSleepTypes">
+          <End Role="TruckSleepTypes" Type="Self.TruckSleepTypes" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckSleepTypes">
+              <PropertyRef Name="sleeping_type_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="sleeping_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TruckAppModelStoreContainer">
+          <EntitySet Name="BookingGoods" EntityType="Self.BookingGoods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingTruck" EntityType="Self.BookingTruck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientLogin" EntityType="Self.ClientLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DriversLiscenceCodes" EntityType="Self.DriversLiscenceCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffBankingDetails" EntityType="Self.StaffBankingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffDepartments" EntityType="Self.StaffDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TruckDrivers" EntityType="Self.TruckDrivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TruckMaintenance" EntityType="Self.TruckMaintenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trucks" EntityType="Self.Trucks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TruckSleepTypes" EntityType="Self.TruckSleepTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BookingTruck_BookingGoods" Association="Self.FK_BookingTruck_BookingGoods">
+            <End Role="BookingGoods" EntitySet="BookingGoods" />
+            <End Role="BookingTruck" EntitySet="BookingTruck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Clients" Association="Self.FK_BookingTruck_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="BookingTruck" EntitySet="BookingTruck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Staff" Association="Self.FK_BookingTruck_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="BookingTruck" EntitySet="BookingTruck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_TruckDrivers" Association="Self.FK_BookingTruck_TruckDrivers">
+            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
+            <End Role="BookingTruck" EntitySet="BookingTruck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Trucks" Association="Self.FK_BookingTruck_Trucks">
+            <End Role="Trucks" EntitySet="Trucks" />
+            <End Role="BookingTruck" EntitySet="BookingTruck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_DriversLiscenceCodes" Association="Self.FK_Staff_DriversLiscenceCodes">
+            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffBankingDetails" Association="Self.FK_Staff_StaffBankingDetails">
+            <End Role="StaffBankingDetails" EntitySet="StaffBankingDetails" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffDepartments" Association="Self.FK_Staff_StaffDepartments">
+            <End Role="StaffDepartments" EntitySet="StaffDepartments" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffLogin" Association="Self.FK_Staff_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogin" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TruckDrivers_Staff" Association="Self.FK_TruckDrivers_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_DriversLiscenceCodes" Association="Self.FK_Trucks_DriversLiscenceCodes">
+            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_TruckMaintenance" Association="Self.FK_Trucks_TruckMaintenance">
+            <End Role="TruckMaintenance" EntitySet="TruckMaintenance" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_TruckSleepTypes" Association="Self.FK_Trucks_TruckSleepTypes">
+            <End Role="TruckSleepTypes" EntitySet="TruckSleepTypes" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TruckAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookingGood">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="goods_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BookingTrucks" Relationship="Self.FK_BookingTruck_BookingGoods" FromRole="BookingGoods" ToRole="BookingTruck" />
+        </EntityType>
+        <EntityType Name="BookingTruck">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booking_date_made" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="booking_departure_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="booking_arrival_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="departure_street_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departure_street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departure_street_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departure_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="arrival_street_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="arrival_street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="arrival_street_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="arrival_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="truck_id" Type="Int32" Nullable="false" />
+          <Property Name="staff_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="booking_notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="driver_id" Type="Int32" Nullable="false" />
+          <Property Name="delivery_distance" Type="Int32" />
+          <NavigationProperty Name="BookingGood" Relationship="Self.FK_BookingTruck_BookingGoods" FromRole="BookingTruck" ToRole="BookingGoods" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_BookingTruck_Clients" FromRole="BookingTruck" ToRole="Clients" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_BookingTruck_Staff" FromRole="BookingTruck" ToRole="Staff" />
+          <NavigationProperty Name="TruckDriver" Relationship="Self.FK_BookingTruck_TruckDrivers" FromRole="BookingTruck" ToRole="TruckDrivers" />
+          <NavigationProperty Name="Truck" Relationship="Self.FK_BookingTruck_Trucks" FromRole="BookingTruck" ToRole="Trucks" />
+        </EntityType>
+        <EntityType Name="ClientLogin">
+          <Key>
+            <PropertyRef Name="clientLogin_id" />
+          </Key>
+          <Property Name="clientLogin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="clientPass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="clientMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="clientProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="business_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_landline" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_cellphone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_address_street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_address_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_address_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_address_areacode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_login" Type="Int32" />
+          <NavigationProperty Name="BookingTrucks" Relationship="Self.FK_BookingTruck_Clients" FromRole="Clients" ToRole="BookingTruck" />
+        </EntityType>
+        <EntityType Name="DriversLiscenceCode">
+          <Key>
+            <PropertyRef Name="licence_code_id" />
+          </Key>
+          <Property Name="licence_code_id" Type="Int32" Nullable="false" />
+          <Property Name="code_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_DriversLiscenceCodes" FromRole="DriversLiscenceCodes" ToRole="Staff" />
+          <NavigationProperty Name="Trucks" Relationship="Self.FK_Trucks_DriversLiscenceCodes" FromRole="DriversLiscenceCodes" ToRole="Trucks" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="staff_id" />
+          </Key>
+          <Property Name="staff_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_number" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cellphone_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street_number" Type="Int32" Nullable="false" />
+          <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address_province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="licence_code_id" Type="Int32" Nullable="false" />
+          <Property Name="banking_id" Type="Int32" Nullable="false" />
+          <Property Name="login_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingTrucks" Relationship="Self.FK_BookingTruck_Staff" FromRole="Staff" ToRole="BookingTruck" />
+          <NavigationProperty Name="DriversLiscenceCode" Relationship="Self.FK_Staff_DriversLiscenceCodes" FromRole="Staff" ToRole="DriversLiscenceCodes" />
+          <NavigationProperty Name="StaffBankingDetail" Relationship="Self.FK_Staff_StaffBankingDetails" FromRole="Staff" ToRole="StaffBankingDetails" />
+          <NavigationProperty Name="StaffDepartment" Relationship="Self.FK_Staff_StaffDepartments" FromRole="Staff" ToRole="StaffDepartments" />
+          <NavigationProperty Name="StaffLogin" Relationship="Self.FK_Staff_StaffLogin" FromRole="Staff" ToRole="StaffLogin" />
+          <NavigationProperty Name="TruckDrivers" Relationship="Self.FK_TruckDrivers_Staff" FromRole="Staff" ToRole="TruckDrivers" />
+        </EntityType>
+        <EntityType Name="StaffBankingDetail">
+          <Key>
+            <PropertyRef Name="banking_id" />
+          </Key>
+          <Property Name="banking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="account_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="account_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="branch_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="branch_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffBankingDetails" FromRole="StaffBankingDetails" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StaffDepartment">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="department_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="department_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffDepartments" FromRole="StaffDepartments" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StaffLogin">
+          <Key>
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffLogin" FromRole="StaffLogin" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="TruckDriver">
+          <Key>
+            <PropertyRef Name="driver_id" />
+          </Key>
+          <Property Name="driver_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingTrucks" Relationship="Self.FK_BookingTruck_TruckDrivers" FromRole="TruckDrivers" ToRole="BookingTruck" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_TruckDrivers_Staff" FromRole="TruckDrivers" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="TruckMaintenance">
+          <Key>
+            <PropertyRef Name="maintenance_id" />
+          </Key>
+          <Property Name="maintenance_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kilos_serviced" Type="Int32" Nullable="false" />
+          <Property Name="date_last_service" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_tires_renewed" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Trucks" Relationship="Self.FK_Trucks_TruckMaintenance" FromRole="TruckMaintenance" ToRole="Trucks" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="truck_id" />
+          </Key>
+          <Property Name="truck_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="truck_registration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="truck_weight" Type="Int32" Nullable="false" />
+          <Property Name="truck_capacity" Type="Int32" Nullable="false" />
+          <Property Name="truck_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="truck_kilos" Type="Int32" Nullable="false" />
+          <Property Name="body_type_trailer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="licence_code_id" Type="Int32" Nullable="false" />
+          <Property Name="mode_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horse_power" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fuel_tank_litre" Type="Int32" Nullable="false" />
+          <Property Name="fuel_usage_kilo" Type="Int32" Nullable="false" />
+          <Property Name="sleeping_type_id" Type="Int32" Nullable="false" />
+          <Property Name="maintenance_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingTrucks" Relationship="Self.FK_BookingTruck_Trucks" FromRole="Trucks" ToRole="BookingTruck" />
+          <NavigationProperty Name="DriversLiscenceCode" Relationship="Self.FK_Trucks_DriversLiscenceCodes" FromRole="Trucks" ToRole="DriversLiscenceCodes" />
+          <NavigationProperty Name="TruckMaintenance" Relationship="Self.FK_Trucks_TruckMaintenance" FromRole="Trucks" ToRole="TruckMaintenance" />
+          <NavigationProperty Name="TruckSleepType" Relationship="Self.FK_Trucks_TruckSleepTypes" FromRole="Trucks" ToRole="TruckSleepTypes" />
+        </EntityType>
+        <EntityType Name="TruckSleepType">
+          <Key>
+            <PropertyRef Name="sleeping_type_id" />
+          </Key>
+          <Property Name="sleeping_type_id" Type="Int32" Nullable="false" />
+          <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Trucks" Relationship="Self.FK_Trucks_TruckSleepTypes" FromRole="TruckSleepTypes" ToRole="Trucks" />
+        </EntityType>
+        <Association Name="FK_BookingTruck_BookingGoods">
+          <End Role="BookingGoods" Type="Self.BookingGood" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingGoods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_TruckDrivers">
+          <End Role="TruckDrivers" Type="Self.TruckDriver" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckDrivers">
+              <PropertyRef Name="driver_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="driver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTruck_Trucks">
+          <End Role="Trucks" Type="Self.Truck" Multiplicity="1" />
+          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trucks">
+              <PropertyRef Name="truck_id" />
+            </Principal>
+            <Dependent Role="BookingTruck">
+              <PropertyRef Name="truck_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_DriversLiscenceCodes">
+          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCode" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriversLiscenceCodes">
+              <PropertyRef Name="licence_code_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="licence_code_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_DriversLiscenceCodes">
+          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCode" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriversLiscenceCodes">
+              <PropertyRef Name="licence_code_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="licence_code_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffBankingDetails">
+          <End Role="StaffBankingDetails" Type="Self.StaffBankingDetail" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffBankingDetails">
+              <PropertyRef Name="banking_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="banking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffDepartments">
+          <End Role="StaffDepartments" Type="Self.StaffDepartment" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffDepartments">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffLogin">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="login_id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TruckDrivers_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="TruckDrivers" Type="Self.TruckDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="TruckDrivers">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_TruckMaintenance">
+          <End Role="TruckMaintenance" Type="Self.TruckMaintenance" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckMaintenance">
+              <PropertyRef Name="maintenance_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="maintenance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trucks_TruckSleepTypes">
+          <End Role="TruckSleepTypes" Type="Self.TruckSleepType" Multiplicity="1" />
+          <End Role="Trucks" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckSleepTypes">
+              <PropertyRef Name="sleeping_type_id" />
+            </Principal>
+            <Dependent Role="Trucks">
+              <PropertyRef Name="sleeping_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TruckAppEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookingGoods" EntityType="Self.BookingGood" />
+          <EntitySet Name="BookingTrucks" EntityType="Self.BookingTruck" />
+          <EntitySet Name="ClientLogins" EntityType="Self.ClientLogin" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="DriversLiscenceCodes" EntityType="Self.DriversLiscenceCode" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="StaffBankingDetails" EntityType="Self.StaffBankingDetail" />
+          <EntitySet Name="StaffDepartments" EntityType="Self.StaffDepartment" />
+          <EntitySet Name="StaffLogins" EntityType="Self.StaffLogin" />
+          <EntitySet Name="TruckDrivers" EntityType="Self.TruckDriver" />
+          <EntitySet Name="TruckMaintenances" EntityType="Self.TruckMaintenance" />
+          <EntitySet Name="Trucks" EntityType="Self.Truck" />
+          <EntitySet Name="TruckSleepTypes" EntityType="Self.TruckSleepType" />
+          <AssociationSet Name="FK_BookingTruck_BookingGoods" Association="Self.FK_BookingTruck_BookingGoods">
+            <End Role="BookingGoods" EntitySet="BookingGoods" />
+            <End Role="BookingTruck" EntitySet="BookingTrucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Clients" Association="Self.FK_BookingTruck_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="BookingTruck" EntitySet="BookingTrucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Staff" Association="Self.FK_BookingTruck_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="BookingTruck" EntitySet="BookingTrucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_TruckDrivers" Association="Self.FK_BookingTruck_TruckDrivers">
+            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
+            <End Role="BookingTruck" EntitySet="BookingTrucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTruck_Trucks" Association="Self.FK_BookingTruck_Trucks">
+            <End Role="Trucks" EntitySet="Trucks" />
+            <End Role="BookingTruck" EntitySet="BookingTrucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_DriversLiscenceCodes" Association="Self.FK_Staff_DriversLiscenceCodes">
+            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_DriversLiscenceCodes" Association="Self.FK_Trucks_DriversLiscenceCodes">
+            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffBankingDetails" Association="Self.FK_Staff_StaffBankingDetails">
+            <End Role="StaffBankingDetails" EntitySet="StaffBankingDetails" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffDepartments" Association="Self.FK_Staff_StaffDepartments">
+            <End Role="StaffDepartments" EntitySet="StaffDepartments" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffLogin" Association="Self.FK_Staff_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogins" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TruckDrivers_Staff" Association="Self.FK_TruckDrivers_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_TruckMaintenance" Association="Self.FK_Trucks_TruckMaintenance">
+            <End Role="TruckMaintenance" EntitySet="TruckMaintenances" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trucks_TruckSleepTypes" Association="Self.FK_Trucks_TruckSleepTypes">
+            <End Role="TruckSleepTypes" EntitySet="TruckSleepTypes" />
+            <End Role="Trucks" EntitySet="Trucks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TruckAppModelStoreContainer" CdmEntityContainer="TruckAppEntities1">
+          <EntitySetMapping Name="BookingGoods">
+            <EntityTypeMapping TypeName="TruckAppModel.BookingGood">
+              <MappingFragment StoreEntitySet="BookingGoods">
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+                <ScalarProperty Name="goods_description" ColumnName="goods_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingTrucks">
+            <EntityTypeMapping TypeName="TruckAppModel.BookingTruck">
+              <MappingFragment StoreEntitySet="BookingTruck">
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="booking_date_made" ColumnName="booking_date_made" />
+                <ScalarProperty Name="booking_departure_date" ColumnName="booking_departure_date" />
+                <ScalarProperty Name="booking_arrival_date" ColumnName="booking_arrival_date" />
+                <ScalarProperty Name="departure_street_number" ColumnName="departure_street_number" />
+                <ScalarProperty Name="departure_street_name" ColumnName="departure_street_name" />
+                <ScalarProperty Name="departure_street_area" ColumnName="departure_street_area" />
+                <ScalarProperty Name="departure_city" ColumnName="departure_city" />
+                <ScalarProperty Name="arrival_street_number" ColumnName="arrival_street_number" />
+                <ScalarProperty Name="arrival_street_name" ColumnName="arrival_street_name" />
+                <ScalarProperty Name="arrival_street_area" ColumnName="arrival_street_area" />
+                <ScalarProperty Name="arrival_city" ColumnName="arrival_city" />
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="booking_notes" ColumnName="booking_notes" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+                <ScalarProperty Name="delivery_distance" ColumnName="delivery_distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientLogins">
+            <EntityTypeMapping TypeName="TruckAppModel.ClientLogin">
+              <MappingFragment StoreEntitySet="ClientLogin">
+                <ScalarProperty Name="clientLogin_id" ColumnName="clientLogin_id" />
+                <ScalarProperty Name="clientUser" ColumnName="clientUser" />
+                <ScalarProperty Name="clientPass" ColumnName="clientPass" />
+                <ScalarProperty Name="clientMail" ColumnName="clientMail" />
+                <ScalarProperty Name="clientProfilePicture" ColumnName="clientProfilePicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="TruckAppModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="client_firstname" ColumnName="client_firstname" />
+                <ScalarProperty Name="client_lastname" ColumnName="client_lastname" />
+                <ScalarProperty Name="business_name" ColumnName="business_name" />
+                <ScalarProperty Name="client_landline" ColumnName="client_landline" />
+                <ScalarProperty Name="client_cellphone" ColumnName="client_cellphone" />
+                <ScalarProperty Name="client_address_street" ColumnName="client_address_street" />
+                <ScalarProperty Name="client_address_number" ColumnName="client_address_number" />
+                <ScalarProperty Name="client_address_area" ColumnName="client_address_area" />
+                <ScalarProperty Name="client_address_areacode" ColumnName="client_address_areacode" />
+                <ScalarProperty Name="client_city" ColumnName="client_city" />
+                <ScalarProperty Name="client_login" ColumnName="client_login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DriversLiscenceCodes">
+            <EntityTypeMapping TypeName="TruckAppModel.DriversLiscenceCode">
+              <MappingFragment StoreEntitySet="DriversLiscenceCodes">
+                <ScalarProperty Name="licence_code_id" ColumnName="licence_code_id" />
+                <ScalarProperty Name="code_type" ColumnName="code_type" />
+                <ScalarProperty Name="code_description" ColumnName="code_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="TruckAppModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="id_number" ColumnName="id_number" />
+                <ScalarProperty Name="cellphone_number" ColumnName="cellphone_number" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_area" ColumnName="street_area" />
+                <ScalarProperty Name="address_province" ColumnName="address_province" />
+                <ScalarProperty Name="address_city" ColumnName="address_city" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="licence_code_id" ColumnName="licence_code_id" />
+                <ScalarProperty Name="banking_id" ColumnName="banking_id" />
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffBankingDetails">
+            <EntityTypeMapping TypeName="TruckAppModel.StaffBankingDetail">
+              <MappingFragment StoreEntitySet="StaffBankingDetails">
+                <ScalarProperty Name="banking_id" ColumnName="banking_id" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="account_type" ColumnName="account_type" />
+                <ScalarProperty Name="account_number" ColumnName="account_number" />
+                <ScalarProperty Name="branch_name" ColumnName="branch_name" />
+                <ScalarProperty Name="branch_code" ColumnName="branch_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffDepartments">
+            <EntityTypeMapping TypeName="TruckAppModel.StaffDepartment">
+              <MappingFragment StoreEntitySet="StaffDepartments">
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="department_description" ColumnName="department_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffLogins">
+            <EntityTypeMapping TypeName="TruckAppModel.StaffLogin">
+              <MappingFragment StoreEntitySet="StaffLogin">
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TruckDrivers">
+            <EntityTypeMapping TypeName="TruckAppModel.TruckDriver">
+              <MappingFragment StoreEntitySet="TruckDrivers">
+                <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TruckMaintenances">
+            <EntityTypeMapping TypeName="TruckAppModel.TruckMaintenance">
+              <MappingFragment StoreEntitySet="TruckMaintenance">
+                <ScalarProperty Name="maintenance_id" ColumnName="maintenance_id" />
+                <ScalarProperty Name="kilos_serviced" ColumnName="kilos_serviced" />
+                <ScalarProperty Name="date_last_service" ColumnName="date_last_service" />
+                <ScalarProperty Name="date_tires_renewed" ColumnName="date_tires_renewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trucks">
+            <EntityTypeMapping TypeName="TruckAppModel.Truck">
+              <MappingFragment StoreEntitySet="Trucks">
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="truck_registration" ColumnName="truck_registration" />
+                <ScalarProperty Name="truck_weight" ColumnName="truck_weight" />
+                <ScalarProperty Name="truck_capacity" ColumnName="truck_capacity" />
+                <ScalarProperty Name="truck_type" ColumnName="truck_type" />
+                <ScalarProperty Name="truck_kilos" ColumnName="truck_kilos" />
+                <ScalarProperty Name="body_type_trailer" ColumnName="body_type_trailer" />
+                <ScalarProperty Name="licence_code_id" ColumnName="licence_code_id" />
+                <ScalarProperty Name="mode_type" ColumnName="mode_type" />
+                <ScalarProperty Name="horse_power" ColumnName="horse_power" />
+                <ScalarProperty Name="fuel_tank_litre" ColumnName="fuel_tank_litre" />
+                <ScalarProperty Name="fuel_usage_kilo" ColumnName="fuel_usage_kilo" />
+                <ScalarProperty Name="sleeping_type_id" ColumnName="sleeping_type_id" />
+                <ScalarProperty Name="maintenance_id" ColumnName="maintenance_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TruckSleepTypes">
+            <EntityTypeMapping TypeName="TruckAppModel.TruckSleepType">
+              <MappingFragment StoreEntitySet="TruckSleepTypes">
+                <ScalarProperty Name="sleeping_type_id" ColumnName="sleeping_type_id" />
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="type_description" ColumnName="type_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
