@@ -4,166 +4,166 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TruckAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="TruckAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="BookingGoods">
           <Key>
             <PropertyRef Name="goods_id" />
           </Key>
-          <Property Name="goods_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="goods_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="goods_description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="goods_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="goods_type" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="goods_description" Nullable="false" MaxLength="250" Type="varchar" />
         </EntityType>
         <EntityType Name="BookingTruck">
           <Key>
             <PropertyRef Name="booking_id" />
           </Key>
-          <Property Name="booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="booking_date_made" Type="date" Nullable="false" />
-          <Property Name="booking_departure_date" Type="date" Nullable="false" />
-          <Property Name="booking_arrival_date" Type="date" Nullable="false" />
-          <Property Name="departure_street_number" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="departure_street_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="departure_street_area" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="departure_city" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="arrival_street_number" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="arrival_street_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="arrival_street_area" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="arrival_city" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="truck_id" Type="int" Nullable="false" />
-          <Property Name="staff_id" Type="int" Nullable="false" />
-          <Property Name="goods_id" Type="int" Nullable="false" />
-          <Property Name="booking_notes" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="client_id" Type="int" Nullable="false" />
-          <Property Name="driver_id" Type="int" Nullable="false" />
+          <Property Name="booking_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="booking_date_made" Nullable="false" Type="date" />
+          <Property Name="booking_departure_date" Nullable="false" Type="date" />
+          <Property Name="booking_arrival_date" Nullable="false" Type="date" />
+          <Property Name="departure_street_number" Nullable="false" MaxLength="10" Type="varchar" />
+          <Property Name="departure_street_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="departure_street_area" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="departure_city" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="arrival_street_number" Nullable="false" MaxLength="10" Type="varchar" />
+          <Property Name="arrival_street_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="arrival_street_area" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="arrival_city" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="truck_id" Nullable="false" Type="int" />
+          <Property Name="staff_id" Nullable="false" Type="int" />
+          <Property Name="goods_id" Nullable="false" Type="int" />
+          <Property Name="booking_notes" Nullable="false" MaxLength="250" Type="varchar" />
+          <Property Name="client_id" Nullable="false" Type="int" />
+          <Property Name="driver_id" Nullable="false" Type="int" />
           <Property Name="delivery_distance" Type="int" />
         </EntityType>
         <EntityType Name="ClientLogin">
           <Key>
             <PropertyRef Name="clientLogin_id" />
           </Key>
-          <Property Name="clientLogin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="clientUser" Type="varchar" MaxLength="255" />
-          <Property Name="clientPass" Type="varchar" MaxLength="255" />
-          <Property Name="clientMail" Type="varchar" MaxLength="255" />
+          <Property Name="clientLogin_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="clientUser" MaxLength="255" Type="varchar" />
+          <Property Name="clientPass" MaxLength="255" Type="varchar" />
+          <Property Name="clientMail" MaxLength="255" Type="varchar" />
           <Property Name="clientProfilePicture" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="client_id" />
           </Key>
-          <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="client_firstname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="client_lastname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="business_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="client_landline" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="client_cellphone" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="client_address_street" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="client_address_number" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="client_address_area" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="client_address_areacode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="client_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="client_firstname" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="client_lastname" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="business_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="client_landline" Nullable="false" MaxLength="15" Type="varchar" />
+          <Property Name="client_cellphone" Nullable="false" MaxLength="10" Type="varchar" />
+          <Property Name="client_address_street" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="client_address_number" Nullable="false" MaxLength="10" Type="varchar" />
+          <Property Name="client_address_area" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="client_address_areacode" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="client_city" Nullable="false" MaxLength="50" Type="varchar" />
           <Property Name="client_login" Type="int" />
         </EntityType>
         <EntityType Name="DriversLiscenceCodes">
           <Key>
             <PropertyRef Name="licence_code_id" />
           </Key>
-          <Property Name="licence_code_id" Type="int" Nullable="false" />
-          <Property Name="code_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="code_description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="licence_code_id" Nullable="false" Type="int" />
+          <Property Name="code_type" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="code_description" Nullable="false" MaxLength="250" Type="varchar" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="staff_id" />
           </Key>
-          <Property Name="staff_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="lastname" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="id_number" Type="varchar" MaxLength="13" Nullable="false" />
-          <Property Name="cellphone_number" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="street_number" Type="int" Nullable="false" />
-          <Property Name="street_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="street_area" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="address_province" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="address_city" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="department_id" Type="int" Nullable="false" />
-          <Property Name="licence_code_id" Type="int" Nullable="false" />
-          <Property Name="banking_id" Type="int" Nullable="false" />
-          <Property Name="login_id" Type="int" Nullable="false" />
+          <Property Name="staff_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="firstname" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="lastname" Nullable="false" MaxLength="100" Type="varchar" />
+          <Property Name="id_number" Nullable="false" MaxLength="13" Type="varchar" />
+          <Property Name="cellphone_number" Nullable="false" MaxLength="10" Type="varchar" />
+          <Property Name="street_number" Nullable="false" Type="int" />
+          <Property Name="street_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="street_area" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="address_province" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="address_city" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="department_id" Nullable="false" Type="int" />
+          <Property Name="licence_code_id" Nullable="false" Type="int" />
+          <Property Name="banking_id" Nullable="false" Type="int" />
+          <Property Name="login_id" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="StaffBankingDetails">
           <Key>
             <PropertyRef Name="banking_id" />
           </Key>
-          <Property Name="banking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="bank_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="account_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="account_number" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="branch_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="branch_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="banking_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="bank_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="account_type" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="account_number" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="branch_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="branch_code" Nullable="false" MaxLength="10" Type="varchar" />
         </EntityType>
         <EntityType Name="StaffDepartments">
           <Key>
             <PropertyRef Name="department_id" />
           </Key>
-          <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="department_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="department_description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="department_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="department_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="department_description" Nullable="false" MaxLength="250" Type="varchar" />
         </EntityType>
         <EntityType Name="StaffLogin">
           <Key>
             <PropertyRef Name="login_id" />
           </Key>
-          <Property Name="login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="login_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="username" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="password" Nullable="false" MaxLength="50" Type="varchar" />
         </EntityType>
         <EntityType Name="TruckDrivers">
           <Key>
             <PropertyRef Name="driver_id" />
           </Key>
-          <Property Name="driver_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="staff_id" Type="int" Nullable="false" />
+          <Property Name="driver_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="staff_id" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="TruckMaintenance">
           <Key>
             <PropertyRef Name="maintenance_id" />
           </Key>
-          <Property Name="maintenance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="kilos_serviced" Type="int" Nullable="false" />
-          <Property Name="date_last_service" Type="date" Nullable="false" />
-          <Property Name="date_tires_renewed" Type="date" Nullable="false" />
+          <Property Name="maintenance_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="kilos_serviced" Nullable="false" Type="int" />
+          <Property Name="date_last_service" Nullable="false" Type="date" />
+          <Property Name="date_tires_renewed" Nullable="false" Type="date" />
         </EntityType>
         <EntityType Name="Trucks">
           <Key>
             <PropertyRef Name="truck_id" />
           </Key>
-          <Property Name="truck_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="truck_registration" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="truck_weight" Type="int" Nullable="false" />
-          <Property Name="truck_capacity" Type="int" Nullable="false" />
-          <Property Name="truck_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="truck_kilos" Type="int" Nullable="false" />
-          <Property Name="body_type_trailer" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="licence_code_id" Type="int" Nullable="false" />
-          <Property Name="mode_type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="horse_power" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fuel_tank_litre" Type="int" Nullable="false" />
-          <Property Name="fuel_usage_kilo" Type="int" Nullable="false" />
-          <Property Name="sleeping_type_id" Type="int" Nullable="false" />
-          <Property Name="maintenance_id" Type="int" Nullable="false" />
+          <Property Name="truck_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="truck_registration" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="truck_weight" Nullable="false" Type="int" />
+          <Property Name="truck_capacity" Nullable="false" Type="int" />
+          <Property Name="truck_type" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="truck_kilos" Nullable="false" Type="int" />
+          <Property Name="body_type_trailer" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="licence_code_id" Nullable="false" Type="int" />
+          <Property Name="mode_type" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="horse_power" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="fuel_tank_litre" Nullable="false" Type="int" />
+          <Property Name="fuel_usage_kilo" Nullable="false" Type="int" />
+          <Property Name="sleeping_type_id" Nullable="false" Type="int" />
+          <Property Name="maintenance_id" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="TruckSleepTypes">
           <Key>
             <PropertyRef Name="sleeping_type_id" />
           </Key>
-          <Property Name="sleeping_type_id" Type="int" Nullable="false" />
-          <Property Name="type_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="type_description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="sleeping_type_id" Nullable="false" Type="int" />
+          <Property Name="type_name" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="type_description" Nullable="false" MaxLength="250" Type="varchar" />
         </EntityType>
         <Association Name="FK_BookingTruck_BookingGoods">
-          <End Role="BookingGoods" Type="Self.BookingGoods" Multiplicity="1" />
-          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <End Type="Self.BookingGoods" Multiplicity="1" Role="BookingGoods" />
+          <End Type="Self.BookingTruck" Multiplicity="*" Role="BookingTruck" />
           <ReferentialConstraint>
             <Principal Role="BookingGoods">
               <PropertyRef Name="goods_id" />
@@ -174,8 +174,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BookingTruck_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <End Type="Self.Clients" Multiplicity="1" Role="Clients" />
+          <End Type="Self.BookingTruck" Multiplicity="*" Role="BookingTruck" />
           <ReferentialConstraint>
             <Principal Role="Clients">
               <PropertyRef Name="client_id" />
@@ -186,8 +186,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BookingTruck_Staff">
-          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
-          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <End Type="Self.Staff" Multiplicity="1" Role="Staff" />
+          <End Type="Self.BookingTruck" Multiplicity="*" Role="BookingTruck" />
           <ReferentialConstraint>
             <Principal Role="Staff">
               <PropertyRef Name="staff_id" />
@@ -198,8 +198,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BookingTruck_TruckDrivers">
-          <End Role="TruckDrivers" Type="Self.TruckDrivers" Multiplicity="1" />
-          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <End Type="Self.TruckDrivers" Multiplicity="1" Role="TruckDrivers" />
+          <End Type="Self.BookingTruck" Multiplicity="*" Role="BookingTruck" />
           <ReferentialConstraint>
             <Principal Role="TruckDrivers">
               <PropertyRef Name="driver_id" />
@@ -210,8 +210,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BookingTruck_Trucks">
-          <End Role="Trucks" Type="Self.Trucks" Multiplicity="1" />
-          <End Role="BookingTruck" Type="Self.BookingTruck" Multiplicity="*" />
+          <End Type="Self.Trucks" Multiplicity="1" Role="Trucks" />
+          <End Type="Self.BookingTruck" Multiplicity="*" Role="BookingTruck" />
           <ReferentialConstraint>
             <Principal Role="Trucks">
               <PropertyRef Name="truck_id" />
@@ -222,8 +222,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staff_DriversLiscenceCodes">
-          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCodes" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Type="Self.DriversLiscenceCodes" Multiplicity="1" Role="DriversLiscenceCodes" />
+          <End Type="Self.Staff" Multiplicity="*" Role="Staff" />
           <ReferentialConstraint>
             <Principal Role="DriversLiscenceCodes">
               <PropertyRef Name="licence_code_id" />
@@ -234,8 +234,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staff_StaffBankingDetails">
-          <End Role="StaffBankingDetails" Type="Self.StaffBankingDetails" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Type="Self.StaffBankingDetails" Multiplicity="1" Role="StaffBankingDetails" />
+          <End Type="Self.Staff" Multiplicity="*" Role="Staff" />
           <ReferentialConstraint>
             <Principal Role="StaffBankingDetails">
               <PropertyRef Name="banking_id" />
@@ -246,8 +246,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staff_StaffDepartments">
-          <End Role="StaffDepartments" Type="Self.StaffDepartments" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Type="Self.StaffDepartments" Multiplicity="1" Role="StaffDepartments" />
+          <End Type="Self.Staff" Multiplicity="*" Role="Staff" />
           <ReferentialConstraint>
             <Principal Role="StaffDepartments">
               <PropertyRef Name="department_id" />
@@ -258,8 +258,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staff_StaffLogin">
-          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Type="Self.StaffLogin" Multiplicity="1" Role="StaffLogin" />
+          <End Type="Self.Staff" Multiplicity="*" Role="Staff" />
           <ReferentialConstraint>
             <Principal Role="StaffLogin">
               <PropertyRef Name="login_id" />
@@ -270,8 +270,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TruckDrivers_Staff">
-          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
-          <End Role="TruckDrivers" Type="Self.TruckDrivers" Multiplicity="*" />
+          <End Type="Self.Staff" Multiplicity="1" Role="Staff" />
+          <End Type="Self.TruckDrivers" Multiplicity="*" Role="TruckDrivers" />
           <ReferentialConstraint>
             <Principal Role="Staff">
               <PropertyRef Name="staff_id" />
@@ -282,8 +282,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trucks_DriversLiscenceCodes">
-          <End Role="DriversLiscenceCodes" Type="Self.DriversLiscenceCodes" Multiplicity="1" />
-          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <End Type="Self.DriversLiscenceCodes" Multiplicity="1" Role="DriversLiscenceCodes" />
+          <End Type="Self.Trucks" Multiplicity="*" Role="Trucks" />
           <ReferentialConstraint>
             <Principal Role="DriversLiscenceCodes">
               <PropertyRef Name="licence_code_id" />
@@ -294,8 +294,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trucks_TruckMaintenance">
-          <End Role="TruckMaintenance" Type="Self.TruckMaintenance" Multiplicity="1" />
-          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <End Type="Self.TruckMaintenance" Multiplicity="1" Role="TruckMaintenance" />
+          <End Type="Self.Trucks" Multiplicity="*" Role="Trucks" />
           <ReferentialConstraint>
             <Principal Role="TruckMaintenance">
               <PropertyRef Name="maintenance_id" />
@@ -306,8 +306,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trucks_TruckSleepTypes">
-          <End Role="TruckSleepTypes" Type="Self.TruckSleepTypes" Multiplicity="1" />
-          <End Role="Trucks" Type="Self.Trucks" Multiplicity="*" />
+          <End Type="Self.TruckSleepTypes" Multiplicity="1" Role="TruckSleepTypes" />
+          <End Type="Self.Trucks" Multiplicity="*" Role="Trucks" />
           <ReferentialConstraint>
             <Principal Role="TruckSleepTypes">
               <PropertyRef Name="sleeping_type_id" />
@@ -332,56 +332,56 @@
           <EntitySet Name="Trucks" EntityType="Self.Trucks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TruckSleepTypes" EntityType="Self.TruckSleepTypes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookingTruck_BookingGoods" Association="Self.FK_BookingTruck_BookingGoods">
-            <End Role="BookingGoods" EntitySet="BookingGoods" />
-            <End Role="BookingTruck" EntitySet="BookingTruck" />
+            <End EntitySet="BookingGoods" Role="BookingGoods" />
+            <End EntitySet="BookingTruck" Role="BookingTruck" />
           </AssociationSet>
           <AssociationSet Name="FK_BookingTruck_Clients" Association="Self.FK_BookingTruck_Clients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="BookingTruck" EntitySet="BookingTruck" />
+            <End EntitySet="Clients" Role="Clients" />
+            <End EntitySet="BookingTruck" Role="BookingTruck" />
           </AssociationSet>
           <AssociationSet Name="FK_BookingTruck_Staff" Association="Self.FK_BookingTruck_Staff">
-            <End Role="Staff" EntitySet="Staff" />
-            <End Role="BookingTruck" EntitySet="BookingTruck" />
+            <End EntitySet="Staff" Role="Staff" />
+            <End EntitySet="BookingTruck" Role="BookingTruck" />
           </AssociationSet>
           <AssociationSet Name="FK_BookingTruck_TruckDrivers" Association="Self.FK_BookingTruck_TruckDrivers">
-            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
-            <End Role="BookingTruck" EntitySet="BookingTruck" />
+            <End EntitySet="TruckDrivers" Role="TruckDrivers" />
+            <End EntitySet="BookingTruck" Role="BookingTruck" />
           </AssociationSet>
           <AssociationSet Name="FK_BookingTruck_Trucks" Association="Self.FK_BookingTruck_Trucks">
-            <End Role="Trucks" EntitySet="Trucks" />
-            <End Role="BookingTruck" EntitySet="BookingTruck" />
+            <End EntitySet="Trucks" Role="Trucks" />
+            <End EntitySet="BookingTruck" Role="BookingTruck" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_DriversLiscenceCodes" Association="Self.FK_Staff_DriversLiscenceCodes">
-            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
-            <End Role="Staff" EntitySet="Staff" />
+            <End EntitySet="DriversLiscenceCodes" Role="DriversLiscenceCodes" />
+            <End EntitySet="Staff" Role="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffBankingDetails" Association="Self.FK_Staff_StaffBankingDetails">
-            <End Role="StaffBankingDetails" EntitySet="StaffBankingDetails" />
-            <End Role="Staff" EntitySet="Staff" />
+            <End EntitySet="StaffBankingDetails" Role="StaffBankingDetails" />
+            <End EntitySet="Staff" Role="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffDepartments" Association="Self.FK_Staff_StaffDepartments">
-            <End Role="StaffDepartments" EntitySet="StaffDepartments" />
-            <End Role="Staff" EntitySet="Staff" />
+            <End EntitySet="StaffDepartments" Role="StaffDepartments" />
+            <End EntitySet="Staff" Role="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffLogin" Association="Self.FK_Staff_StaffLogin">
-            <End Role="StaffLogin" EntitySet="StaffLogin" />
-            <End Role="Staff" EntitySet="Staff" />
+            <End EntitySet="StaffLogin" Role="StaffLogin" />
+            <End EntitySet="Staff" Role="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_TruckDrivers_Staff" Association="Self.FK_TruckDrivers_Staff">
-            <End Role="Staff" EntitySet="Staff" />
-            <End Role="TruckDrivers" EntitySet="TruckDrivers" />
+            <End EntitySet="Staff" Role="Staff" />
+            <End EntitySet="TruckDrivers" Role="TruckDrivers" />
           </AssociationSet>
           <AssociationSet Name="FK_Trucks_DriversLiscenceCodes" Association="Self.FK_Trucks_DriversLiscenceCodes">
-            <End Role="DriversLiscenceCodes" EntitySet="DriversLiscenceCodes" />
-            <End Role="Trucks" EntitySet="Trucks" />
+            <End EntitySet="DriversLiscenceCodes" Role="DriversLiscenceCodes" />
+            <End EntitySet="Trucks" Role="Trucks" />
           </AssociationSet>
           <AssociationSet Name="FK_Trucks_TruckMaintenance" Association="Self.FK_Trucks_TruckMaintenance">
-            <End Role="TruckMaintenance" EntitySet="TruckMaintenance" />
-            <End Role="Trucks" EntitySet="Trucks" />
+            <End EntitySet="TruckMaintenance" Role="TruckMaintenance" />
+            <End EntitySet="Trucks" Role="Trucks" />
           </AssociationSet>
           <AssociationSet Name="FK_Trucks_TruckSleepTypes" Association="Self.FK_Trucks_TruckSleepTypes">
-            <End Role="TruckSleepTypes" EntitySet="TruckSleepTypes" />
-            <End Role="Trucks" EntitySet="Trucks" />
+            <End EntitySet="TruckSleepTypes" Role="TruckSleepTypes" />
+            <End EntitySet="Trucks" Role="Trucks" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -416,7 +416,7 @@
           <Property Name="arrival_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="truck_id" Type="Int32" Nullable="false" />
           <Property Name="staff_id" Type="Int32" Nullable="false" />
-          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Nullable="false" Type="Int32" />
           <Property Name="booking_notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
           <Property Name="driver_id" Type="Int32" Nullable="false" />
